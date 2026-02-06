@@ -3,6 +3,10 @@
     margin: 10px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 @font-face {
     font-family: 'Space Grotesk';
     src: url("SpaceGrotesk-Bold.ttf")
