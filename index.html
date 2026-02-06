@@ -1,69 +1,1122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JuPa</title>
-    <link rel="stylesheet" href="main.css">
-    
+    <title>Mykhaylo Tretyakov | Kandidat #42 Jugendparlament Braunschweig</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #7c3aed;
+            --accent: #06b6d4;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --white: #ffffff;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.2rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 0.8rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .jupa-logo {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.01em;
+        }
+
+        .logo-subtitle {
+            font-size: 0.8rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 10rem;
+            padding-bottom: 6rem;
+            background: linear-gradient(135deg, #f0f9ff 0%, #fef7ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M37.5 37.5C20.5 54.5 0 87.5 0 100v100h200V0C200 87.5 179.5 54.5 162.5 37.5 145.5 20.5 112.5 0 100 0 87.5 0 54.5 20.5 37.5 37.5z' fill='%232563eb' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-size: cover;
+            opacity: 0.7;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            max-width: 90%;
+        }
+
+        .candidate-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: var(--radius);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow);
+            margin-top: 1rem;
+            transform: perspective(500px) rotateY(-10deg);
+            transition: var(--transition);
+            letter-spacing: -0.02em;
+        }
+
+        .candidate-badge:hover {
+            transform: perspective(500px) rotateY(0deg);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .image-wrapper {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
+            transition: var(--transition);
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-wrapper:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+        }
+
+        .candidate-photo {
+            width: 80%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            border-radius: 20px;
+            z-index: -1;
+            bottom: -20px;
+            left: -20px;
+            transform: rotate(15deg);
+        }
+
+        /* Section Titles */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-subtitle {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            letter-spacing: -0.03em;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-desc {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .stat-item:hover .stat-value,
+        .stat-item:hover .stat-label {
+            color: white;
+        }
+
+        .stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gray);
+        }
+
+        /* Voting Section */
+        .voting {
+            background: linear-gradient(135deg, #f0f9ff 0%, #fef7ff 100%);
+        }
+
+        .voting-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .step {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            z-index: 2;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .step-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            letter-spacing: -0.02em;
+        }
+
+        .step-desc {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .vote-reminder {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-top: 4rem;
+            box-shadow: var(--shadow);
+        }
+
+        .vote-reminder h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .highlight-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+            margin: 1rem 0;
+            display: block;
+            letter-spacing: -0.03em;
+        }
+
+        /* Details Section */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .detail-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .detail-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            letter-spacing: -0.02em;
+        }
+
+        .detail-card ul {
+            list-style: none;
+        }
+
+        .detail-card li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .detail-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-column h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            letter-spacing: -0.01em;
+        }
+
+        .footer-column a {
+            color: var(--gray-light);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Jugendparlament Logo Styling */
+        .jupa-logo circle {
+            transition: var(--transition);
+        }
+
+        .logo:hover .jupa-logo circle {
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content, .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+            
+            .image-wrapper {
+                height: 400px;
+            }
+            
+            .voting-steps, .details-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-radius: 0 0 var(--radius) var(--radius);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .stats, .voting-steps, .details-grid, .footer-links {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+            
+            .hero {
+                padding-top: 8rem;
+            }
+            
+            .image-wrapper {
+                height: 350px;
+                transform: none;
+            }
+            
+            .highlight-number {
+                font-size: 3rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .stagger-delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .stagger-delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .stagger-delay-3 { animation-delay: 0.3s; opacity: 0; }
+        .stagger-delay-4 { animation-delay: 0.4s; opacity: 0; }
+        
+        /* Placeholder image styling */
+        .placeholder-img {
+            background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .placeholder-img i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .placeholder-img p {
+            color: var(--gray);
+            font-weight: 500;
+            text-align: center;
+        }
+    </style>
 </head>
-
 <body>
-    <div class="head">
-        <div class="name">Tretyakov Mykhaylo<br>№42</div>
-        <div class="jupalogo">
-      <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 94.6992 129.991">
-        <g clipPath="url(#clip0_7_9)" id="JuPa">
-          <circle cx="6.76423" cy="123.227" fill="var(--fill-0, #01965E)" id="Ellipse 1" r="6.76423" />
-          <circle cx="6.76423" cy="103.816" fill="var(--fill-0, #01AFB8)" id="Ellipse 2" r="6.76423" />
-          <circle cx="6.76423" cy="84.4059" fill="var(--fill-0, #EE6E00)" id="Ellipse 3" r="6.76423" />
-          <circle cx="24.9983" cy="76.7594" fill="var(--fill-0, #DF3214)" id="Ellipse 4" r="6.76423" />
-          <circle cx="37.9385" cy="62.0545" fill="var(--fill-0, #03AFB9)" id="Ellipse 10" r="6.76423" />
-          <circle cx="54.9962" cy="72.642" fill="var(--fill-0, #01965E)" id="Ellipse 11" r="6.76423" />
-          <circle cx="71.4656" cy="82.6413" fill="var(--fill-0, #0096C9)" id="Ellipse 12" r="6.76423" />
-          <circle cx="80.2885" cy="65.5837" fill="var(--fill-0, #78BE20)" id="Ellipse 13" r="6.76423" />
-          <circle cx="63.2309" cy="54.408" fill="var(--fill-0, #FED101)" id="Ellipse 14" r="6.76423" />
-          <circle cx="44.9969" cy="43.2323" fill="var(--fill-0, #DF3214)" id="Ellipse 15" r="6.76423" />
-          <circle cx="48.526" cy="23.8219" fill="var(--fill-0, #9B1F67)" id="Ellipse 16" r="6.76423" />
-          <circle cx="68.5246" cy="14.4108" fill="var(--fill-0, #FED101)" id="Ellipse 17" r="6.76423" />
-          <circle cx="67.3482" cy="34.9976" fill="var(--fill-0, #0096C9)" id="Ellipse 18" r="6.76423" />
-          <circle cx="85.5823" cy="46.1732" fill="var(--fill-0, #EE6E00)" id="Ellipse 19" r="6.76423" />
-          <circle cx="87.9351" cy="26.7628" fill="var(--fill-0, #03AFB9)" id="Ellipse 20" r="6.76423" />
-          <circle cx="86.7587" cy="6.76423" fill="var(--fill-0, #DF3214)" id="Ellipse 21" r="6.76423" />
-          <circle cx="25.5865" cy="99.1107" fill="var(--fill-0, #FFD101)" id="Ellipse 5" r="6.76423" />
-          <circle cx="26.1746" cy="119.698" fill="var(--fill-0, #9B1F67)" id="Ellipse 6" r="6.76423" />
-          <circle cx="43.8205" cy="110.875" fill="var(--fill-0, #78BE20)" id="Ellipse 7" r="6.76423" />
-          <circle cx="42.6441" cy="87.9351" fill="var(--fill-0, #9B1F67)" id="Ellipse 8" r="6.76423" />
-          <circle cx="59.1135" cy="98.5225" fill="var(--fill-0, #EE6E00)" id="Ellipse 9" r="6.76423" />
-        </g>
-        <defs>
-          <clipPath id="clip0_7_9">
-            <rect fill="white" height="129.991" width="94.6992" />
-          </clipPath>
-        </defs>
-      </svg>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <svg class="jupa-logo" viewBox="0 0 94.6992 129.991">
+                        <g clip-path="url(#clip0_7_9)" id="JuPa">
+                          <circle cx="6.76423" cy="123.227" fill="#01965E" id="Ellipse 1" r="6.76423" />
+                          <circle cx="6.76423" cy="103.816" fill="#01AFB8" id="Ellipse 2" r="6.76423" />
+                          <circle cx="6.76423" cy="84.4059" fill="#EE6E00" id="Ellipse 3" r="6.76423" />
+                          <circle cx="24.9983" cy="76.7594" fill="#DF3214" id="Ellipse 4" r="6.76423" />
+                          <circle cx="37.9385" cy="62.0545" fill="#03AFB9" id="Ellipse 10" r="6.76423" />
+                          <circle cx="54.9962" cy="72.642" fill="#01965E" id="Ellipse 11" r="6.76423" />
+                          <circle cx="71.4656" cy="82.6413" fill="#0096C9" id="Ellipse 12" r="6.76423" />
+                          <circle cx="80.2885" cy="65.5837" fill="#78BE20" id="Ellipse 13" r="6.76423" />
+                          <circle cx="63.2309" cy="54.408" fill="#FED101" id="Ellipse 14" r="6.76423" />
+                          <circle cx="44.9969" cy="43.2323" fill="#DF3214" id="Ellipse 15" r="6.76423" />
+                          <circle cx="48.526" cy="23.8219" fill="#9B1F67" id="Ellipse 16" r="6.76423" />
+                          <circle cx="68.5246" cy="14.4108" fill="#FED101" id="Ellipse 17" r="6.76423" />
+                          <circle cx="67.3482" cy="34.9976" fill="#0096C9" id="Ellipse 18" r="6.76423" />
+                          <circle cx="85.5823" cy="46.1732" fill="#EE6E00" id="Ellipse 19" r="6.76423" />
+                          <circle cx="87.9351" cy="26.7628" fill="#03AFB9" id="Ellipse 20" r="6.76423" />
+                          <circle cx="86.7587" cy="6.76423" fill="#DF3214" id="Ellipse 21" r="6.76423" />
+                          <circle cx="25.5865" cy="99.1107" fill="#FFD101" id="Ellipse 5" r="6.76423" />
+                          <circle cx="26.1746" cy="119.698" fill="#9B1F67" id="Ellipse 6" r="6.76423" />
+                          <circle cx="43.8205" cy="110.875" fill="#78BE20" id="Ellipse 7" r="6.76423" />
+                          <circle cx="42.6441" cy="87.9351" fill="#9B1F67" id="Ellipse 8" r="6.76423" />
+                          <circle cx="59.1135" cy="98.5225" fill="#EE6E00" id="Ellipse 9" r="6.76423" />
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_7_9">
+                            <rect fill="white" height="129.991" width="94.6992" />
+                          </clipPath>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <div class="logo-name">Mykhaylo Tretyakov</div>
+                    <div class="logo-subtitle">Jugendparlament Braunschweig</div>
+                </div>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="#about" class="nav-link">Über Mich</a>
+                <a href="#vote" class="nav-link">Wie Wählen?</a>
+                <a href="#details" class="nav-link">Meine Ziele</a>
+                <a href="#vote" class="nav-cta">Jetzt Unterstützen</a>
+            </nav>
         </div>
-    </div>
-    <div class="scrollto">
-        <a href="#section1">Section 1</a>
-        <a href="#section2">Section 2</a>
-        <a href="#section3">Section 3</a>
-    </div>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </header>
 
-    <div class="content">
-        <div class="section" id="section1">
-            <h2>Section 1</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien eget nunc efficitur commodo. Sed at ligula a enim efficitur tincidunt. Curabitur ac odio nec nisl convallis fermentum.</p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <div class="hero-text">
+                    <h1>Mykhaylo Tretyakov</h1>
+                    <p>Kandidat für das Jugendparlament Braunschweig. Ich setze mich für eine jugendgerechte Stadt ein, in der junge Menschen mitbestimmen und ihre Zukunft aktiv gestalten können.</p>
+                    <div class="candidate-badge fade-in stagger-delay-1">Kandidat #42</div>
+                </div>
+                <div class="hero-image fade-in stagger-delay-2">
+                    <div class="image-wrapper">
+                        <!-- Placeholder for candidate photo -->
+                        <div class="placeholder-img">
+                            <i class="fas fa-user-tie"></i>
+                            <p>Mykhaylo Tretyakov</p>
+                            <p>Kandidat #42</p>
+                            <p style="font-size: 0.9rem; margin-top: 1rem;">Hier könnte dein Foto stehen</p>
+                        </div>
+                        <!-- Uncomment the line below and add your actual photo -->
+                        <!-- <img src="your-photo.jpg" alt="Mykhaylo Tretyakov" class="candidate-photo"> -->
+                    </div>
+                    <div class="image-decoration"></div>
+                </div>
+            </div>
         </div>
-        <div class="section" id="section2">
-            <h2>Section 2</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien eget nunc efficitur commodo. Sed at ligula a enim efficitur tincidunt. Curabitur ac odio nec nisl convallis fermentum.</p>
-        </div>
-        <div class="section" id="section3">
-            <h2>Section 3</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien eget nunc efficitur commodo. Sed at ligula a enim efficitur tincidunt. Curabitur ac odio nec nisl convallis fermentum.</p>
-        </div>
+    </section>
 
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-subtitle">KANDIDATENPORTRAIT</div>
+                <h2 class="section-title">Über <span>Mich</span></h2>
+                <p class="section-desc">17 Jahre, engagiert für die Jugend Braunschweigs. Schüler des Gymnasiums Kleine Burg mit Leidenschaft für Politik und Gemeinschaft.</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <p>Seit meiner frühen Jugend engagiere ich mich für die Belange junger Menschen in unserer Stadt. Ich bin überzeugt, dass Jugendliche nicht nur die Zukunft, sondern auch die Gegenwart Braunschweigs sind.</p>
+                    <p>Meine Motivation für die Kandidatur zum Jugendparlament entspringt dem Wunsch, eine Brücke zwischen Jugend und Politik zu bauen. Ich möchte sicherstellen, dass unsere Stimmen gehört und unsere Ideen umgesetzt werden.</p>
+                    <p>In meiner Freizeit engagiere ich mich im örtlichen Jugendzentrum, spiele Geige im Schulorchester und organisiere Clean-Up-Events in unseren Parks.</p>
+                    
+                    <div class="stats">
+                        <div class="stat-item fade-in stagger-delay-1">
+                            <div class="stat-value">3+</div>
+                            <div class="stat-label">Jahre Engagement</div>
+                        </div>
+                        <div class="stat-item fade-in stagger-delay-2">
+                            <div class="stat-value">12+</div>
+                            <div class="stat-label">Projekte geleitet</div>
+                        </div>
+                        <div class="stat-item fade-in stagger-delay-3">
+                            <div class="stat-value">100%</div>
+                            <div class="stat-label">Für die Jugend</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image fade-in stagger-delay-2">
+                    <div class="image-wrapper">
+                        <div class="placeholder-img">
+                            <i class="fas fa-handshake"></i>
+                            <p>Engagement in der Gemeinschaft</p>
+                            <p style="font-size: 0.9rem; margin-top: 1rem;">Bild von meinem Engagement</p>
+                        </div>
+                        <!-- Uncomment the line below and add your actual photo -->
+                        <!-- <img src="engagement-photo.jpg" alt="Mykhaylo Tretyakov Engagement" class="candidate-photo"> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Voting Section -->
+    <section class="voting" id="vote">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-subtitle">DEINE STIMME ZÄHLT</div>
+                <h2 class="section-title">So <span>kannst du wählen</span></h2>
+                <p class="section-desc">Die Wahl zum Jugendparlament Braunschweig findet vom 15. bis 22. Oktober 2023 statt. Alle Jugendlichen zwischen 14 und 21 Jahren mit Wohnsitz in Braunschweig sind wahlberechtigt.</p>
+            </div>
+            
+            <div class="voting-steps">
+                <div class="step fade-in stagger-delay-1">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Wahlberechtigung prüfen</h3>
+                    <p class="step-desc">Du bist zwischen 14 und 21 Jahre alt und hast deinen Wohnsitz in Braunschweig? Dann bist du wahlberechtigt! Ein Personalausweis oder Schülerausweis genügt.</p>
+                </div>
+                
+                <div class="step fade-in stagger-delay-2">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Informieren & Entscheiden</h3>
+                    <p class="step-desc">Lerne die Kandidat:innen und ihre Ziele kennen. Jede Stimme ist wichtig für die Zukunft unserer Stadt. Entscheide, wer deine Interessen am besten vertritt.</p>
+                </div>
+                
+                <div class="step fade-in stagger-delay-3">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Deine Stimme abgeben</h3>
+                    <p class="step-desc">Wähle online über die offizielle Wahlplattform oder in einem der Wahllokale an Schulen und Jugendzentren. Die Stimmabgabe ist einfach und schnell.</p>
+                </div>
+            </div>
+            
+            <div class="vote-reminder fade-in stagger-delay-4">
+                <h3>Wichtig bei der Stimmabgabe:</h3>
+                <p>Wenn du mich, Mykhaylo Tretyakov, unterstützen möchtest, gib bitte folgende Nummer an:</p>
+                <span class="highlight-number">42</span>
+                <p>Mit deiner Stimme für Kandidat #42 unterstützt du meine Vision für ein jugendgerechtes Braunschweig!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Section -->
+    <section class="details" id="details">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-subtitle">MEINE VISION FÜR BRAUNSCHWEIG</div>
+                <h2 class="section-title">Meine <span>Hauptziele</span></h2>
+                <p class="section-desc">Als Mitglied des Jugendparlaments werde ich mich für folgende Schwerpunkte einsetzen, um Braunschweig noch lebenswerter für junge Menschen zu gestalten.</p>
+            </div>
+            
+            <div class="details-grid">
+                <div class="detail-card fade-in stagger-delay-1">
+                    <div class="detail-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Umwelt & Nachhaltigkeit</h3>
+                    <ul>
+                        <li>Mehr Grünflächen und Aufenthaltsorte für Jugendliche</li>
+                        <li>Ausbau des Fahrradnetzes und kostenloser ÖPNV für Jugendliche</li>
+                        <li>Plastikfreie Schulen und nachhaltige Schulverpflegung</li>
+                        <li>Förderung von Urban Gardening Projekten</li>
+                    </ul>
+                </div>
+                
+                <div class="detail-card fade-in stagger-delay-2">
+                    <div class="detail-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Bildung & Freizeit</h3>
+                    <ul>
+                        <li>Modernisierung und digitale Ausstattung aller Schulen</li>
+                        <li>Kostenlose Nachhilfe- und Förderprogramme</li>
+                        <li>Ausbau von Jugendzentren und Sportangeboten</li>
+                        <li>Kultur- und Freizeitangebote zu sozialen Preisen</li>
+                    </ul>
+                </div>
+                
+                <div class="detail-card fade-in stagger-delay-3">
+                    <div class="detail-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Mitbestimmung & Teilhabe</h3>
+                    <ul>
+                        <li>Stärkere Einbindung Jugendlicher in kommunale Entscheidungen</li>
+                        <li>Regelmäßige Jugendforen mit Politikern aller Ebenen</li>
+                        <li>Transparenz in der Jugendpolitik und einfacherer Zugang zu Informationen</li>
+                        <li>Unterstützung von Jugendinitiativen und -projekten</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">Mykhaylo Tretyakov</div>
+                    <p>Kandidat für das Jugendparlament Braunschweig. Gemeinsam für eine jugendgerechte Stadt!</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <a href="#about">Über Mich</a>
+                        <a href="#vote">Wie Wählen?</a>
+                        <a href="#details">Meine Ziele</a>
+                        <a href="#home">Startseite</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Wichtige Infos</h4>
+                        <a href="#">Wahltermin</a>
+                        <a href="#">Wahlberechtigung</a>
+                        <a href="#">Wahllokale</a>
+                        <a href="#">Online-Wahl</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Kontakt</h4>
+                        <a href="#">E-Mail senden</a>
+                        <a href="#">Termin vereinbaren</a>
+                        <a href="#">Fragen & Antworten</a>
+                        <a href="#">Support</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Mykhaylo Tretyakov | Kandidat #42 für das Jugendparlament Braunschweig</p>
+                <p>Diese Seite ist eine offizielle Kandidatenpräsentation für die Jugendparlamentswahl 2023.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link, .nav-cta').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add instructions for adding actual photos
+        document.addEventListener('DOMContentLoaded', function() {
+            const placeholders = document.querySelectorAll('.placeholder-img');
+            placeholders.forEach(placeholder => {
+                placeholder.addEventListener('click', function() {
+                    alert('Um dein eigenes Foto hinzuzufügen:\n1. Ersetze den <div class="placeholder-img">...</div> Code\n2. Durch: <img src="dein-foto.jpg" alt="Mykhaylo Tretyakov" class="candidate-photo">\n3. Lade dein Foto in den gleichen Ordner hoch oder ändere den Pfad.');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
